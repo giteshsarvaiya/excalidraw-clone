@@ -17,6 +17,15 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   title: 'Sketchroom — Collaborative Drawing',
   description: 'Real-time collaborative whiteboard with a hand-drawn feel.',
+  openGraph: {
+    title: 'Sketchroom — Collaborative Drawing',
+    description: 'Real-time collaborative whiteboard with a hand-drawn feel.',
+    images: [{ url: '/og.webp', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og.webp'],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
