@@ -1,6 +1,7 @@
 'use client';
 
-import { FillStyle, Shape, DEFAULT_SHAPE_STYLE } from '@/lib/types';
+import { useState } from 'react';
+import { FillStyle, Shape } from '@/lib/types';
 
 const STROKE_COLORS = ['#1e1e1e', '#e03131', '#2f9e44', '#1971c2', '#f08c00', '#9c36b5', '#0c8599', '#fff'];
 const FILL_COLORS = ['transparent', '#ffc9c9', '#b2f2bb', '#a5d8ff', '#ffec99', '#e5dbff', '#c5f6fa', '#1e1e1e'];
@@ -52,6 +53,8 @@ function ColorSwatch({
 }
 
 export default function PropertiesPanel({ style, onChange, selectedShape, onShapeChange }: Props) {
+  const [open, setOpen] = useState(false);
+
   const effectiveStyle = selectedShape
     ? {
         strokeColor: selectedShape.strokeColor,
@@ -71,7 +74,25 @@ export default function PropertiesPanel({ style, onChange, selectedShape, onShap
   };
 
   return (
-    <div className="props-panel">
+    <div className={`props-panel ${open ? 'props-panel--open' : ''}`}>
+      {/* Mobile toggle button */}
+      <button
+        className="props-toggle"
+        onClick={() => setOpen((v) => !v)}
+        aria-label={open ? 'Hide properties' : 'Show properties'}
+        aria-expanded={open}
+      >
+        <span className="props-toggle-label">Style</span>
+        <svg
+          width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+          style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      <div className="props-body">
       <section>
         <label className="prop-label">Stroke</label>
         <div className="color-row">
@@ -150,6 +171,7 @@ export default function PropertiesPanel({ style, onChange, selectedShape, onShap
           className="prop-slider"
         />
       </section>
+      </div>
     </div>
   );
 }
