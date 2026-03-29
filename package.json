@@ -8,12 +8,21 @@
     "start": "next start"
   },
   "dependencies": {
+    "@liveblocks/client": "^3.15.5",
+    "@liveblocks/node": "^3.15.5",
+    "@liveblocks/react": "^3.15.5",
+    "@upstash/redis": "^1.37.0",
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.3",
     "next": "16.2.1",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "roughjs": "^4.6.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
